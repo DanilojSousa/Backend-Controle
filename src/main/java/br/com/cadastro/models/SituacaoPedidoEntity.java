@@ -58,6 +58,8 @@ public class SituacaoPedidoEntity implements Serializable {
 	}
 
 	
+
+	
 	
 	
 }

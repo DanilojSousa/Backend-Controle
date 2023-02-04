@@ -20,13 +20,16 @@ public class FuncionarioSetorEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer Id;
 	private SetorEntity setor;
-	private FuncionarioEntity funcionario;
+	private UsuarioEntity usuario;
 	private Double salario;
 	private Date data;
+	private NivelFuncaoEntity nivelFuncao;
+	private Boolean delete;
 	
 	public FuncionarioSetorEntity() {
-		funcionario = new FuncionarioEntity();
+		usuario = new UsuarioEntity();
 		setor = new SetorEntity();
+		nivelFuncao = new NivelFuncaoEntity();
 	}
 
 	@Id
@@ -51,13 +54,13 @@ public class FuncionarioSetorEntity implements Serializable {
 	}
 
 	@OneToOne
-	@JoinColumn(name="id_funcionario")
-	public FuncionarioEntity getFuncionario() {
-		return funcionario;
+	@JoinColumn(name="id_usuario")
+	public UsuarioEntity getUsuario() {
+		return usuario;
 	}
 
-	public void setFuncionario(FuncionarioEntity funcionario) {
-		this.funcionario = funcionario;
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
 	}
 
 	@Column(name = "salario")
@@ -77,10 +80,29 @@ public class FuncionarioSetorEntity implements Serializable {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	@OneToOne
+	@JoinColumn(name="id_nivel")
+	public NivelFuncaoEntity getNivelFuncao() {
+		return nivelFuncao;
+	}
+
+	public void setNivelFuncao(NivelFuncaoEntity nivelFuncao) {
+		this.nivelFuncao = nivelFuncao;
+	}
+
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id, data, funcionario, salario, setor);
+		return Objects.hash(Id, data, delete, nivelFuncao, salario, setor, usuario);
 	}
 
 	@Override
@@ -92,10 +114,12 @@ public class FuncionarioSetorEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		FuncionarioSetorEntity other = (FuncionarioSetorEntity) obj;
-		return Objects.equals(Id, other.Id) && Objects.equals(data, other.data)
-				&& Objects.equals(funcionario, other.funcionario) && Objects.equals(salario, other.salario)
-				&& Objects.equals(setor, other.setor);
+		return Objects.equals(Id, other.Id) && Objects.equals(data, other.data) && Objects.equals(delete, other.delete)
+				&& Objects.equals(nivelFuncao, other.nivelFuncao) && Objects.equals(salario, other.salario)
+				&& Objects.equals(setor, other.setor) && Objects.equals(usuario, other.usuario);
 	}
+
+	
 	
 	
 	

@@ -3,7 +3,6 @@ package br.com.cadastro.models;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -111,9 +110,6 @@ public class TipoPedidoEntity implements Serializable{
 
 
 	
-
-	
-
 	
 	
 	

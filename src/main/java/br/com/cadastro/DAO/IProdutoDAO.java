@@ -8,14 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.cadastro.models.FuncionarioSetorEntity;
+import br.com.cadastro.models.PedidoProdutoEntity;
 import br.com.cadastro.models.ProdutoEntity;
 
 @Repository
 public interface IProdutoDAO extends JpaRepository<ProdutoEntity, Integer>{
 	
 	@Query(value="select * from sistema_controle.produto p "
-			+ "where REPLACE(UPPER(p.nome), 'ÑÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ', 'NAEIOUAEIOUAOAEIOOAEIOUC') like %:texto% "
-			+ "or REPLACE(UPPER(p.modelo), 'ÑÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ', 'NAEIOUAEIOUAOAEIOOAEIOUC') like %:texto% ", 
+			+ "where REPLACE(UPPER(p.nome), 'ÑÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ', 'NAEIOUAEIOUAOAEIOOAEIOUC') like %:texto% AND p.deletado = false", 
 			nativeQuery = true)
 	List<ProdutoEntity> pesquisa(@Param("texto") String texto);
 	
@@ -38,4 +38,9 @@ public interface IProdutoDAO extends JpaRepository<ProdutoEntity, Integer>{
 	@Query(value="select * from sistema_controle.produto p "
 			+ "where p.id_situacao = :id", nativeQuery = true)
 	List<ProdutoEntity> getByIdPorSituacao(Integer id);
+	
+	@Query(value="select * from sistema_controle.produto p "
+			+ "where p.deletado = false", nativeQuery = true)
+	List<ProdutoEntity> getAllAtivos();
+
 }

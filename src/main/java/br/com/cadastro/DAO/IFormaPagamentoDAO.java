@@ -8,4 +8,5 @@ import br.com.cadastro.models.FormaPagamentoEntity;
 @Repository
 public interface IFormaPagamentoDAO extends JpaRepository<FormaPagamentoEntity, Integer> {
 
+
 }

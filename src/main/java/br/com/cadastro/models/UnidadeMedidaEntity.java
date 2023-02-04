@@ -54,6 +54,8 @@ public class UnidadeMedidaEntity {
 		UnidadeMedidaEntity other = (UnidadeMedidaEntity) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
+
+	
 	
 	
 	

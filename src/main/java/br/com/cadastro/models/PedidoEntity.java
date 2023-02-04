@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +25,7 @@ public class PedidoEntity implements Serializable{
 	private FormaPagamentoEntity formaPagamento;
 	private Date pedEmissao;
 	private SituacaoPedidoEntity situacao;
+	private Boolean delete;
 	
 	public PedidoEntity() {}
 
@@ -97,9 +97,18 @@ public class PedidoEntity implements Serializable{
 		this.situacao = situacao;
 	}
 
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(dadosAdicionais, formaPagamento, pedCodigo, pedEmissao, pedValorTotal, situacao,
+		return Objects.hash(dadosAdicionais, delete, formaPagamento, pedCodigo, pedEmissao, pedValorTotal, situacao,
 				tipoPedido);
 	}
 
@@ -112,11 +121,12 @@ public class PedidoEntity implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PedidoEntity other = (PedidoEntity) obj;
-		return Objects.equals(dadosAdicionais, other.dadosAdicionais)
+		return Objects.equals(dadosAdicionais, other.dadosAdicionais) && Objects.equals(delete, other.delete)
 				&& Objects.equals(formaPagamento, other.formaPagamento) && Objects.equals(pedCodigo, other.pedCodigo)
 				&& Objects.equals(pedEmissao, other.pedEmissao) && Objects.equals(pedValorTotal, other.pedValorTotal)
 				&& Objects.equals(situacao, other.situacao) && Objects.equals(tipoPedido, other.tipoPedido);
 	}
+	
 	
 	
 	

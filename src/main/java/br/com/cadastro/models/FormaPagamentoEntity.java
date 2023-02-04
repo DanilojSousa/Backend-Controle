@@ -57,6 +57,10 @@ public class FormaPagamentoEntity implements Serializable {
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
 
+
+
+
+	
 	
 	
 	

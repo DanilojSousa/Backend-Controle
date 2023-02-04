@@ -7,5 +7,6 @@ import br.com.cadastro.models.NivelFuncaoEntity;
 
 @Repository
 public interface INivelFuncaoDAO extends JpaRepository<NivelFuncaoEntity, Integer>{
+	
 
 }

@@ -20,6 +20,7 @@ public class GrupoProdutoEntity implements Serializable {
 	private Integer id;
 	private String nome;
 	private ProdutoEntity produto;
+	private Boolean delete;
 	
 	public GrupoProdutoEntity() {}
 
@@ -52,10 +53,19 @@ public class GrupoProdutoEntity implements Serializable {
 	public void setProduto(ProdutoEntity produto) {
 		this.produto = produto;
 	}
+	
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nome, produto);
+		return Objects.hash(delete, id, nome, produto);
 	}
 
 	@Override
@@ -67,9 +77,11 @@ public class GrupoProdutoEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		GrupoProdutoEntity other = (GrupoProdutoEntity) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+		return Objects.equals(delete, other.delete) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(produto, other.produto);
 	}
+
+
 
 	
 	

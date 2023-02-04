@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cadastro.models.ClienteEntity;
 import br.com.cadastro.models.TipoPedidoEntity;
 import br.com.cadastro.services.ITipoPedidoService;
 

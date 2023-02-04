@@ -19,9 +19,12 @@ public class MarcaEntity implements Serializable {
 	
 	private Integer id;
 	private String nome;
-	private FornecedorEntity fornecedor;
+	private UsuarioEntity usuario;
+	private Boolean delete;
 	
-	public MarcaEntity() {}
+	public MarcaEntity() {
+		usuario = new UsuarioEntity();
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,20 +45,27 @@ public class MarcaEntity implements Serializable {
 	}
 	
 	@OneToOne
-	@JoinColumn(name = "id_fornecedor")
-	public FornecedorEntity getFornecedor() {
-		return fornecedor;
+	@JoinColumn(name = "id_usuario")
+	public UsuarioEntity getUsuario() {
+		return usuario;
 	}
-	public void setFornecedor(FornecedorEntity fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
 	}
 
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(fornecedor, id, nome);
+		return Objects.hash(delete, id, nome, usuario);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -66,9 +76,10 @@ public class MarcaEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		MarcaEntity other = (MarcaEntity) obj;
-		return Objects.equals(fornecedor, other.fornecedor) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome);
+		return Objects.equals(delete, other.delete) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(usuario, other.usuario);
 	}
+	
 	
 	
 	

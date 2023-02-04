@@ -24,6 +24,11 @@ public class PedidoServiceImpl implements IPedidoService {
 	public List<PedidoEntity> getAll() {
 		return dao.findAll();
 	}
+	
+	@Override
+	public List<PedidoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
 
 	@Override
 	public void excluir(PedidoEntity pedido) {

@@ -26,6 +26,11 @@ public class FuncionarioSetorServiceImpl  implements IFuncionarioSetorService {
 	}
 
 	@Override
+	public List<FuncionarioSetorEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
+	@Override
 	public void excluir(FuncionarioSetorEntity funcionarioSetor) {
 		dao.delete(funcionarioSetor);
 	}
@@ -46,6 +51,14 @@ public class FuncionarioSetorServiceImpl  implements IFuncionarioSetorService {
 	@Override
 	public Boolean possueFuncao(Integer id) {
 		if(dao.getByIdPorFuncao(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	@Override
+	public Boolean possueNivel(Integer id) {
+		if(dao.getByIdPorNivel(id).size() > 0) {
 			return Boolean.TRUE;
 		}
 		return Boolean.FALSE;

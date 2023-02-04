@@ -29,6 +29,11 @@ public class GrupoProdutoServiceImpl implements IGrupoProdutoService {
 	public List<GrupoProdutoEntity> getAll() {
 		return dao.findAll();
 	}
+	
+	@Override
+	public List<GrupoProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
 
 	@Override
 	public GrupoProdutoEntity getById(Integer id) {

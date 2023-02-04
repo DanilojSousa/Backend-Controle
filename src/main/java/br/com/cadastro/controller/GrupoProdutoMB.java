@@ -37,6 +37,11 @@ public class GrupoProdutoMB {
 		return dao.getAll();
 	}
 	
+	@GetMapping(path = "/ativos")
+	public List<GrupoProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(path="/getById")
 	public GrupoProdutoEntity getById(Integer id){
 		return dao.getById(id);

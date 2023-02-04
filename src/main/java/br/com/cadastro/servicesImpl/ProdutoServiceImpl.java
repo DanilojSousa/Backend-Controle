@@ -24,6 +24,11 @@ public class ProdutoServiceImpl implements IProdutoService{
 	public List<ProdutoEntity> getAll() {
 		return dao.findAll();
 	}
+	
+	@Override
+	public List<ProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
 
 	@Override
 	public void excluir(ProdutoEntity produto) {

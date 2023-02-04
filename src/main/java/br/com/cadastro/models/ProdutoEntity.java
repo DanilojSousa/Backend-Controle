@@ -34,6 +34,7 @@ public class ProdutoEntity implements Serializable{
 	private Integer garantia;
 	private MarcaEntity marca;
 	private SituacaoEntity situacao;
+	private Boolean delete;
 	
 	public ProdutoEntity() {
 		setMarca(new MarcaEntity());
@@ -183,8 +184,17 @@ public class ProdutoEntity implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(altura, comprimento, ean, garantia, id, largura, marca, modelo, ncm, nome,
+		return Objects.hash(altura, comprimento, delete, ean, garantia, id, largura, marca, modelo, ncm, nome,
 				partNumber, qtdEmbalagem, qtdUnidade, situacao, unidadeMedida);
+	}
+
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
 	}
 
 	@Override
@@ -197,14 +207,16 @@ public class ProdutoEntity implements Serializable{
 			return false;
 		ProdutoEntity other = (ProdutoEntity) obj;
 		return Objects.equals(altura, other.altura) && Objects.equals(comprimento, other.comprimento)
-				&& Objects.equals(ean, other.ean) && Objects.equals(garantia, other.garantia)
-				&& Objects.equals(id, other.id)
+				&& Objects.equals(delete, other.delete) && Objects.equals(ean, other.ean)
+				&& Objects.equals(garantia, other.garantia) && Objects.equals(id, other.id)
 				&& Objects.equals(largura, other.largura) && Objects.equals(marca, other.marca)
 				&& Objects.equals(modelo, other.modelo) && Objects.equals(ncm, other.ncm)
 				&& Objects.equals(nome, other.nome) && Objects.equals(partNumber, other.partNumber)
 				&& Objects.equals(qtdEmbalagem, other.qtdEmbalagem) && Objects.equals(qtdUnidade, other.qtdUnidade)
 				&& Objects.equals(situacao, other.situacao) && Objects.equals(unidadeMedida, other.unidadeMedida);
 	}
+	
+	
 
 	
 

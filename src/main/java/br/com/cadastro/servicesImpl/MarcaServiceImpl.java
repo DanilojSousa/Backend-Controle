@@ -31,6 +31,11 @@ public class MarcaServiceImpl implements IMarcaService {
 	}
 
 	@Override
+	public List<MarcaEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
+	@Override
 	public MarcaEntity getById(Integer id) {
 		return dao.getById(id);
 	}

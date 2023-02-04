@@ -24,7 +24,7 @@ public class SituacaoPedidoServiceImpl implements ISituacaoPedidoService {
 	public List<SituacaoPedidoEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(SituacaoPedidoEntity situacaoPedido) {
 		dao.delete(situacaoPedido);

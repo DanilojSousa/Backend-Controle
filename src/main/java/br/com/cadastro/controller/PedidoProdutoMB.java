@@ -1,5 +1,7 @@
 package br.com.cadastro.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,12 @@ public class PedidoProdutoMB {
 	public Iterable<PedidoProdutoEntity> getAll(){
 		return dao.getAll();
 	}
+	
+	@GetMapping(path = "/ativos")
+	public List<PedidoProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(path = "/getById")
 	public PedidoProdutoEntity getById(Integer id){
 		return dao.getById(id);

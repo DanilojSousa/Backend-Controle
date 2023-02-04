@@ -37,6 +37,11 @@ public class MarcaMB {
 		return dao.getAll();
 	}
 	
+	@GetMapping(path = "/ativos")
+	public List<MarcaEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(path = "/getById")
 	public MarcaEntity getById(Integer id){
 		return dao.getById(id);

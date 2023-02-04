@@ -37,6 +37,11 @@ public class PedidoMB {
 		return dao.getAll();
 	}
 	
+	@GetMapping(path = "/ativos")
+	public List<PedidoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(path = "/getById")
 	public PedidoEntity getById(Integer id) {	
 		return  dao.getById(id);

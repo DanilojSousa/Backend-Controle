@@ -42,6 +42,11 @@ public class ProdutoMB {
 		return dao.getAll();
 	}
 	
+	@GetMapping(path = "/ativos")
+	public List<ProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(value = "/pesquisa/{nome}")
 	public List<ProdutoEntity> pesquisa(@PathVariable(value = "nome") String nome){
 		nome.replace(" ", "%");
