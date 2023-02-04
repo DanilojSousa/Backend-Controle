@@ -15,6 +15,8 @@ public interface IGrupoProdutoService {
 	
 	public List<GrupoProdutoEntity> getAll();
 	
+	public List<GrupoProdutoEntity> getAllAtivos();
+	
 	public GrupoProdutoEntity getById(Integer id);
 	
 	public Boolean possueProduto(Integer id);

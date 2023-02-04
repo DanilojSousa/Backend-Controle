@@ -24,7 +24,7 @@ public class NivelFuncaoServiceImpl implements INivelFuncaoService {
 	public List<NivelFuncaoEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(NivelFuncaoEntity nivelFuncao) {
 		dao.delete(nivelFuncao);

@@ -24,7 +24,7 @@ public class SetorServiceImpl implements ISetorService{
 	public List<SetorEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(SetorEntity setor) {
 		dao.delete(setor);

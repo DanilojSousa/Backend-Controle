@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.cadastro.models.ServicoEntity;
-import br.com.cadastro.models.TipoPedidoEntity;
 
 @Service
 public interface IServicoService {

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.cadastro.DAO.ITipoPedidoDAO;
-import br.com.cadastro.models.ServicoEntity;
 import br.com.cadastro.models.TipoPedidoEntity;
 import br.com.cadastro.services.ITipoPedidoService;
 

@@ -7,6 +7,5 @@ import br.com.cadastro.models.SituacaoEntity;
 
 @Repository
 public interface ISituacaoDAO extends JpaRepository<SituacaoEntity, Integer>{
-
 	
 }

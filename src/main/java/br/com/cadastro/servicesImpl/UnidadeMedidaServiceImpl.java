@@ -24,7 +24,7 @@ public class UnidadeMedidaServiceImpl implements IUnidadeMedidaService {
 	public List<UnidadeMedidaEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(UnidadeMedidaEntity unidadeMedida) {
 		dao.delete(unidadeMedida);

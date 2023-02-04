@@ -13,6 +13,8 @@ public interface IProdutoService {
 
 	public List<ProdutoEntity> getAll();
 	
+	public List<ProdutoEntity> getAllAtivos();
+	
 	public void excluir(ProdutoEntity produto);
 	
 	public ProdutoEntity getById(Integer id);

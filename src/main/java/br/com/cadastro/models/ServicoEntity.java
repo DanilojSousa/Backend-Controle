@@ -4,15 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Entity
 @Table(name="servico", schema = "faturamento")
@@ -61,6 +58,7 @@ public class ServicoEntity implements Serializable{
 		ServicoEntity other = (ServicoEntity) obj;
 		return Objects.equals(descricao, other.descricao) && Objects.equals(id, other.id);
 	}
-	
+
+
 	
 }

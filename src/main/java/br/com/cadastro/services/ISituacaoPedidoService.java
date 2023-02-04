@@ -1,7 +1,6 @@
 package br.com.cadastro.services;
 
 import java.util.List;
-
 import br.com.cadastro.models.SituacaoPedidoEntity;
 
 public interface ISituacaoPedidoService {

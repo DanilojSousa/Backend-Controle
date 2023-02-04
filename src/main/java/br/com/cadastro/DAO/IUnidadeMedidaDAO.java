@@ -7,5 +7,5 @@ import br.com.cadastro.models.UnidadeMedidaEntity;
 
 @Repository
 public interface IUnidadeMedidaDAO extends JpaRepository<UnidadeMedidaEntity, Integer>  {
-
+	
 }

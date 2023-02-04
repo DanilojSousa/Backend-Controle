@@ -26,6 +26,11 @@ public class PedidoProdutoServiceImpl  implements IPedidoProdutoService {
 	}
 
 	@Override
+	public List<PedidoProdutoEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
+	@Override
 	public void excluir(PedidoProdutoEntity pedidoProduto) {
 		dao.delete(pedidoProduto);
 		

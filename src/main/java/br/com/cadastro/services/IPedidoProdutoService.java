@@ -12,6 +12,8 @@ public interface IPedidoProdutoService {
 	
 	public List<PedidoProdutoEntity> getAll();
 	
+	public List<PedidoProdutoEntity> getAllAtivos();
+	
 	public PedidoProdutoEntity getById(Integer id);
 
 }

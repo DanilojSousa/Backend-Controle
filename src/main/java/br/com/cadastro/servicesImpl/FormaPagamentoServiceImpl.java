@@ -24,7 +24,7 @@ public class FormaPagamentoServiceImpl implements IFormaPagamentoService {
 	public List<FormaPagamentoEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(FormaPagamentoEntity formaPagamento) {
 		dao.delete(formaPagamento);

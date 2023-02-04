@@ -15,6 +15,8 @@ public interface IMarcaService {
 	
 	public List<MarcaEntity> getAll();
 	
+	public List<MarcaEntity> getAllAtivos();
+	
 	public MarcaEntity getById(Integer id);
 	
 	public Boolean possueFornecedor(Integer id);

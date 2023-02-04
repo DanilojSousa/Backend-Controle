@@ -12,6 +12,7 @@ public interface IFormaPagamentoService {
 	
 	public List<FormaPagamentoEntity> getAll();
 	
+	
 	public FormaPagamentoEntity getById(Integer id);
 
 }

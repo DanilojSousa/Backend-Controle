@@ -37,6 +37,11 @@ public class FuncionarioSetorMB {
 		return dao.getAll();
 	}
 	
+	@GetMapping(path = "/ativos")
+	public List<FuncionarioSetorEntity> getAllAtivos() {
+		return dao.getAllAtivos();
+	}
+	
 	@GetMapping(path = "/getById")
 	public FuncionarioSetorEntity getById(Integer id) {	
 		return  dao.getById(id);
@@ -55,5 +60,10 @@ public class FuncionarioSetorMB {
 	@GetMapping(value = "/empregado/{id}")
 	public Boolean possueFuncionario(@PathVariable(value = "id") String id){
 		return dao.possueFuncionario(Integer.parseInt(id));
+	}
+	
+	@GetMapping(value = "/nivel/{id}")
+	public Boolean possueNivel(@PathVariable(value = "id") String id){
+		return dao.possueNivel(Integer.parseInt(id));
 	}
 }

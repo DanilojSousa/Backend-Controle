@@ -56,6 +56,11 @@ public class SituacaoEntity implements Serializable {
 		SituacaoEntity other = (SituacaoEntity) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
+
+	
+	
+	
+	
 	
 	
 }

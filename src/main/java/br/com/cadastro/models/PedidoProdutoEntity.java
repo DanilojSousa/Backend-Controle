@@ -25,6 +25,7 @@ public class PedidoProdutoEntity implements Serializable{
 	private Double valorTotal;
 	private Double desconto;
 	private Integer qtd;
+	private Boolean delete;
 	
 	public PedidoProdutoEntity() {}
 
@@ -95,9 +96,18 @@ public class PedidoProdutoEntity implements Serializable{
 		this.produto = produto;
 	}
 
+	@Column(name = "deletado")
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(desconto, id, pedido, produto, qtd, valorTotal, valorUnitario);
+		return Objects.hash(delete, desconto, id, pedido, produto, qtd, valorTotal, valorUnitario);
 	}
 
 	@Override
@@ -109,12 +119,13 @@ public class PedidoProdutoEntity implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PedidoProdutoEntity other = (PedidoProdutoEntity) obj;
-		return Objects.equals(desconto, other.desconto) && Objects.equals(id, other.id)
-				&& Objects.equals(pedido, other.pedido) && Objects.equals(produto, other.produto)
-				&& Objects.equals(qtd, other.qtd) && Objects.equals(valorTotal, other.valorTotal)
-				&& Objects.equals(valorUnitario, other.valorUnitario);
+		return Objects.equals(delete, other.delete) && Objects.equals(desconto, other.desconto)
+				&& Objects.equals(id, other.id) && Objects.equals(pedido, other.pedido)
+				&& Objects.equals(produto, other.produto) && Objects.equals(qtd, other.qtd)
+				&& Objects.equals(valorTotal, other.valorTotal) && Objects.equals(valorUnitario, other.valorUnitario);
 	}
-
+	
+	
 	
 	
 	

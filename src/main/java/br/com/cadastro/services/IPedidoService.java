@@ -10,6 +10,8 @@ public interface IPedidoService {
 
 	public List<PedidoEntity> getAll();
 	
+	public List<PedidoEntity> getAllAtivos();
+	
 	public void excluir(PedidoEntity Pedido);
 	
 	public PedidoEntity getById(Integer id);

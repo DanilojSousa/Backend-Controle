@@ -6,13 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.cadastro.DAO.IServicoDAO;
-import br.com.cadastro.DAO.ISetorDAO;
-import br.com.cadastro.DAO.ITipoPedidoDAO;
 import br.com.cadastro.models.ServicoEntity;
-import br.com.cadastro.models.SetorEntity;
-import br.com.cadastro.models.TipoPedidoEntity;
 import br.com.cadastro.services.IServicoService;
-import br.com.cadastro.services.ISetorService;
 
 @Component
 public class ServicoServiceImpl implements IServicoService{
@@ -29,7 +24,7 @@ public class ServicoServiceImpl implements IServicoService{
 	public List<ServicoEntity> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public void excluir(ServicoEntity servico) {
 		dao.delete(servico);

@@ -13,6 +13,8 @@ public interface IFuncionarioSetorService {
 
 	public List<FuncionarioSetorEntity> getAll();
 	
+	public List<FuncionarioSetorEntity> getAllAtivos();
+	
 	public void excluir(FuncionarioSetorEntity funcionarioSetor);
 	
 	public FuncionarioSetorEntity getById(Integer id);
@@ -20,4 +22,6 @@ public interface IFuncionarioSetorService {
 	public Boolean possueFuncionario(Integer id);
 		
 	public Boolean possueFuncao(Integer id);
+	
+	public Boolean possueNivel(Integer id);
 }

@@ -54,7 +54,6 @@ public class NivelFuncaoEntity implements Serializable {
 		NivelFuncaoEntity other = (NivelFuncaoEntity) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
-	
-	
+
 	
 }
