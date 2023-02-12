@@ -31,7 +31,7 @@ public interface IUsuarioDAO extends JpaRepository<UsuarioEntity, Integer> {
 	List<UsuarioEntity> pesquisaFuncionario(@Param("texto") String texto);
 	
 	@Query(value="select * from sistema_controle.usuario u "
-			+ "where REPLACE(UPPER(u.nome), 'ÑÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ', 'NAEIOUAEIOUAOAEIOOAEIOUC') like %:texto% AND u.deletado = false",
+			+ "where REPLACE(UPPER(u.nome), 'ÑÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ', 'NAEIOUAEIOUAOAEIOOAEIOUC') like %:texto% AND u.deletado = false ",
 			nativeQuery = true)
 	List<UsuarioEntity> pesquisaTodos(@Param("texto") String texto);
 
@@ -56,7 +56,8 @@ public interface IUsuarioDAO extends JpaRepository<UsuarioEntity, Integer> {
 	List<UsuarioEntity> funcionarios();
 
 	@Query(value="select * from sistema_controle.usuario u "
-			+ "where u.deletado = false", nativeQuery = true)
+			+ "where u.deletado = false ", nativeQuery = true)
 	List<UsuarioEntity> getAllAtivos();
 			
+	
 } 

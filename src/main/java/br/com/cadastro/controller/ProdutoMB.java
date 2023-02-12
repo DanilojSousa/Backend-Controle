@@ -3,16 +3,22 @@ package br.com.cadastro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cadastro.DAO.Repository.ProdutoRepository;
 import br.com.cadastro.models.ProdutoEntity;
+import br.com.cadastro.models.UsuarioEntity;
 import br.com.cadastro.services.IProdutoService;
 
 @RestController
@@ -21,6 +27,9 @@ public class ProdutoMB {
 	
 	@Autowired
 	private IProdutoService dao;
+	
+	@Autowired
+	private ProdutoRepository repository;
 	
 	@PostMapping(path="/salvar")
 	public @ResponseBody ProdutoEntity salva(@RequestBody ProdutoEntity produto) {
@@ -76,5 +85,13 @@ public class ProdutoMB {
 	@GetMapping(value = "/situacao/{id}")
 	public Boolean possueSituacao(@PathVariable(value = "id") String id){
 		return dao.possueSituacao(Integer.parseInt(id));
+	}
+	
+	@GetMapping(path = "/getAllAtivos")
+	public Page<ProdutoEntity> getAllAtivos(@RequestParam Integer pagina, @RequestParam Integer size) {
+		PageRequest page = PageRequest.of(pagina, size, Sort.by("nome"));
+		Page<ProdutoEntity> pageResultado = repository.getAllAtivos(page);
+
+		return pageResultado;
 	}
 }

@@ -3,16 +3,22 @@ package br.com.cadastro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cadastro.DAO.Repository.FuncionarioSetorRespository;
 import br.com.cadastro.models.FuncionarioSetorEntity;
+import br.com.cadastro.models.UsuarioEntity;
 import br.com.cadastro.services.IFuncionarioSetorService;
 
 @RestController
@@ -21,6 +27,9 @@ public class FuncionarioSetorMB {
 	
 	@Autowired
 	private IFuncionarioSetorService dao;
+	
+	@Autowired
+	private FuncionarioSetorRespository repository;
 	
 	@PostMapping(path = "/salvar")
 	public @ResponseBody FuncionarioSetorEntity salvar(@RequestBody FuncionarioSetorEntity funcionarioSetor) {	
@@ -65,5 +74,13 @@ public class FuncionarioSetorMB {
 	@GetMapping(value = "/nivel/{id}")
 	public Boolean possueNivel(@PathVariable(value = "id") String id){
 		return dao.possueNivel(Integer.parseInt(id));
+	}
+	
+	@GetMapping(path = "/getAllAtivos")
+	public Page<FuncionarioSetorEntity> getAllAtivos(@RequestParam Integer pagina, @RequestParam Integer size) {
+		PageRequest page = PageRequest.of(pagina, size);
+		Page<FuncionarioSetorEntity> pageResultado = repository.getAllAtivos(page);
+
+		return pageResultado;
 	}
 }

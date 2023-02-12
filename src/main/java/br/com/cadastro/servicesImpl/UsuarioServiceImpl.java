@@ -84,7 +84,4 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		return dao.funcionarios();
 	}
 	
-	
-
-	
 }
