@@ -47,4 +47,18 @@ public class PedidoMB {
 		return  dao.getById(id);
 	}
 
+	@GetMapping(value = "/tipoPedido/{id}")
+	public Boolean possueTipoPedido(@PathVariable(value = "id") String id){
+		return dao.possueTipoPedido(Integer.parseInt(id));
+	}
+	
+	@GetMapping(value = "/formaPagamento/{id}")
+	public Boolean possueFormaPagamento(@PathVariable(value = "id") String id){
+		return dao.possueFormaPagamento(Integer.parseInt(id));
+	}
+	
+	@GetMapping(value = "/situacao/{id}")
+	public Boolean possueSituacao(@PathVariable(value = "id") String id){
+		return dao.possueSituacao(Integer.parseInt(id));
+	}
 }

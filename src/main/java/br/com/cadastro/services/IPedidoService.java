@@ -15,4 +15,10 @@ public interface IPedidoService {
 	public void excluir(PedidoEntity Pedido);
 	
 	public PedidoEntity getById(Integer id);
+	
+	public Boolean possueTipoPedido(Integer id);
+	
+	public Boolean possueFormaPagamento(Integer id);
+	
+	public Boolean possueSituacao(Integer id);
 }

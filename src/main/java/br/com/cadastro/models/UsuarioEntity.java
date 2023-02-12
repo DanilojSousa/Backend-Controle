@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@EnableJpaRepositories
 @Entity
 @Table(name = "usuario", schema = "cadastro")
 public class UsuarioEntity implements Serializable{

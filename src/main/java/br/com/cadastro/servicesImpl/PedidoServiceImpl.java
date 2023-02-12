@@ -39,6 +39,30 @@ public class PedidoServiceImpl implements IPedidoService {
 	public PedidoEntity getById(Integer id) {
 		return dao.getById(id);
 	}
+
+	@Override
+	public Boolean possueTipoPedido(Integer id) {
+		if(dao.getByIdPorTipoPedido(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	@Override
+	public Boolean possueFormaPagamento(Integer id) {
+		if(dao.getByIdPorFormaPagamento(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	@Override
+	public Boolean possueSituacao(Integer id) {
+		if(dao.getByIdPorSituacao(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
 	
 	
 }
