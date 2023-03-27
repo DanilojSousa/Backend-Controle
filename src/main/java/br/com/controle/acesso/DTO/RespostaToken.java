@@ -6,23 +6,37 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import br.com.controle.acesso.models.LoginEntity;
-
 @JsonTypeName(value = "resposta-token")
 public class RespostaToken implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Date data;
+	private String authorization;
 	private String role;
+	private Date data;
 	private String tempo;
 	private String mensagem;
-	private String token;
 	private Boolean situacao;
 	
 	public RespostaToken() {
 
 	}
 	
+	public String getAuthorization() {
+		return authorization;
+	}
+	
+	public void setAuthorization(String authorization) {
+		this.authorization = authorization;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getData() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(data);
@@ -49,23 +63,6 @@ public class RespostaToken implements Serializable {
 		this.situacao = situacao;
 	}
 
-	public String getToken() {
-		return token;
-	}
 
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-
-	
 	
 }
