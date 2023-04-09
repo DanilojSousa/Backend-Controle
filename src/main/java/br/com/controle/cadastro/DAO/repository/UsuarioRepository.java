@@ -11,7 +11,7 @@ import br.com.controle.cadastro.models.UsuarioEntity;
 @Repository
 public interface UsuarioRepository extends PagingAndSortingRepository<UsuarioEntity, Integer> {
 
-	@Query(" SELECT u FROM UsuarioEntity u WHERE u.cliente = true AND u.fornecedor = false AND u.funcionario = false AND u.delete = false ")
+	@Query(" SELECT u FROM UsuarioEntity u WHERE u.delete = false ")
 	Page<UsuarioEntity> getAllAtivos(Pageable page);
 
 	

@@ -19,5 +19,7 @@ public interface ILoginService {
 	public LoginEntity entrar(String email, String password);
 	
 	public LoginEntity getByPorEmail(String email);
+	
+	public List<LoginEntity> pesquisaLogin(String texto);
 
 }

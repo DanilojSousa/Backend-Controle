@@ -36,7 +36,15 @@ public interface IUsuarioService {
 	
 	public Boolean possueNivelAcesso(Integer id);
 	
+	public Boolean possueLogin(Integer id);
+	
+	public Boolean possueFuncionarioSetor(Integer id);
+	
 	public List<UsuarioEntity> funcionarios();
+	
+	public Boolean validarPossueEmail(String email);
 
+
+	
 	
 }

@@ -23,4 +23,6 @@ public interface IEnviarEmailService {
 	
 	public void enviaEmailAutomatico();
 	
+	public void esqueceuSenha(String email);
+	
 }

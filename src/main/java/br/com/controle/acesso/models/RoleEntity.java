@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -45,6 +46,18 @@ public class RoleEntity implements GrantedAuthority, Serializable {
 		}
 
 		@Override
+		@Transient 
+		public String getAuthority() {
+			return this.nome;
+		}
+
+
+		public String setAuthority(String nome) {
+			return this.nome = nome;
+		}
+		
+		
+		@Override
 		public int hashCode() {
 			return Objects.hash(id, nome);
 		}
@@ -61,16 +74,7 @@ public class RoleEntity implements GrantedAuthority, Serializable {
 			return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 		}
 
-		@Override
-		public String getAuthority() {
-			return this.nome;
-		}
 
-
-		public String setAuthority(String nome) {
-			return this.nome = nome;
-		}
-		
 		
 
 

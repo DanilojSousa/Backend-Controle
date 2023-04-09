@@ -1,14 +1,15 @@
 package br.com.controle.acesso.security.services;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,21 +26,25 @@ import io.jsonwebtoken.SignatureException;
 
 @Service
 public class JWTTokenAutenticacaoService {
-
+	
 	private static final Integer EXPIRACAO = 86400000;
 	public static final String SECRET = "SECRETY_CONTROLE_DANILO";
-	public static final String HEADER = "Authorization";
+	public static final String HEADER = "XAuthorization";
 	public static final String PREFIXO = "Bearer";
 	
-	@Autowired
-	private ILoginService loginService;
-
-	public void addAuthentication(HttpServletResponse response, String email) throws IOException {
-		String JWT = Jwts.builder().setSubject(email).setExpiration(new Date(System.currentTimeMillis() + EXPIRACAO))
+	public void addAuthentication(HttpServletResponse response, String email, Collection<? extends GrantedAuthority> role) throws IOException {
+		String JWT = Jwts.builder()
+				.setSubject(email)
+				.claim("role", role.iterator().next())
+				.setExpiration(new Date(System.currentTimeMillis() + EXPIRACAO))
 				.signWith(SignatureAlgorithm.HS512, SECRET).compact();
 
 		String token = PREFIXO + " " + JWT;
 
+		LoginEntity login = ApplicationContextLoad.getApplicationContext()
+				.getBean(ILoginService.class)
+				.getByPorEmail(email);
+		
 		response.addHeader(HEADER, token);
 		liberacaoCors(response);
 		
@@ -50,8 +55,9 @@ public class JWTTokenAutenticacaoService {
 		resposta.setTempo(" 24 horas ");
 		resposta.setMensagem("Autenticacao efetuado com sucesso");
 		resposta.setSituacao(true);
-		resposta.setRole(loginService.getByPorEmail(email).getUsuario().getRole().getNome());
-		resposta.setToken("Authorization: " + token);
+		resposta.setRole(login.getUsuario().getRole().getNome());
+		resposta.setSituacao(true);
+		resposta.setAuthorization(token);
 		
 		response.getWriter().write(objectMapper.writeValueAsString(resposta));
 

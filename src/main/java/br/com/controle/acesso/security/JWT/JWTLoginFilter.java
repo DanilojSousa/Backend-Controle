@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.controle.acesso.models.LoginEntity;
 import br.com.controle.acesso.security.services.JWTTokenAutenticacaoService;
+import br.com.controle.util.Util;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -38,17 +39,22 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 		LoginEntity login = new ObjectMapper().readValue(request.getInputStream(), LoginEntity.class);
 		
 		//retorna o user com login e senha
-		return getAuthenticationManager().authenticate(
-				new UsernamePasswordAuthenticationToken(
-						login.getUsuario().getEmail(), 
-						login.getPassword()));
+		try {
+			return getAuthenticationManager().authenticate(
+					new UsernamePasswordAuthenticationToken(
+							Util.decode(login.getUsuario().getEmail()), 
+							Util.decode(login.getPassword())));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 		try {
-			new JWTTokenAutenticacaoService().addAuthentication(response, authResult.getName());
+			new JWTTokenAutenticacaoService().addAuthentication(response, authResult.getName(), authResult.getAuthorities());
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
