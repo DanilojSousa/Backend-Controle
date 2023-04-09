@@ -26,8 +26,8 @@ public class EnviarEmailMB {
 	private IEnviarEmailService dao;
 	
 	@PostMapping(path = "/salvar")
-	public @ResponseBody EnviarEmailEntity salvar(@RequestBody EnviarEmailEntity enviarEmail) {	
-	    return dao.salvar(enviarEmail);
+	public @ResponseBody void salvarEmailEsqueceuSenha(@RequestBody String email) {	
+	    dao.esqueceuSenha(email);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")

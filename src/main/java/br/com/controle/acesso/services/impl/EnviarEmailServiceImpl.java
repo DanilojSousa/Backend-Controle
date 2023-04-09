@@ -96,6 +96,20 @@ public class EnviarEmailServiceImpl implements IEnviarEmailService {
 			}
 		}
 	}
+
+	@Override
+	public void esqueceuSenha(String email) {
+
+		EnviarEmailEntity emails = new EnviarEmailEntity();
+		
+		emails.setAssunto("Recuperar senha");
+		emails.setDestinatario(email);
+		emails.setEnviado(false);
+		
+		String corpo = "";
+		
+		
+	}
 		
 
 }

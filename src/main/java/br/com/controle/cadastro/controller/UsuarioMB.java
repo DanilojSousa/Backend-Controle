@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.controle.acesso.models.LoginEntity;
-import br.com.controle.acesso.services.ILoginService;
 import br.com.controle.cadastro.DAO.repository.UsuarioRepository;
 import br.com.controle.cadastro.models.UsuarioEntity;
 import br.com.controle.cadastro.services.IUsuarioService;
@@ -31,10 +29,7 @@ public class UsuarioMB {
 	
 	@Autowired
 	private IUsuarioService dao;
-	
-	@Autowired
-	private ILoginService loginService;
-	
+		
 	@Autowired
 	private UsuarioRepository repository;
 	
@@ -53,7 +48,7 @@ public class UsuarioMB {
 	public List<UsuarioEntity> getAll() {
 		return dao.getAll();
 	}
-	
+		
 	@GetMapping(path = "/ativos")
 	public List<UsuarioEntity> getAllAtivos() {
 		return dao.getAllAtivos();
@@ -113,6 +108,17 @@ public class UsuarioMB {
 		return dao.possueNivelAcesso(Integer.parseInt(id));
 	}
 	
+	@GetMapping(value = "/login/{id}")
+	public Boolean possueLogin(@PathVariable(value = "id") String id){
+		return dao.possueLogin(Integer.parseInt(id));
+	}
+	
+	@GetMapping(value = "/setor/{id}")
+	public Boolean possueFuncionarioSetor(@PathVariable(value = "id") String id){
+		return dao.possueFuncionarioSetor(Integer.parseInt(id));
+	}
+	
+	
 	@GetMapping(path = "/getAllAtivos")
 	public Page<UsuarioEntity> getAllAtivos(@RequestParam Integer pagina, @RequestParam Integer size) {
 		PageRequest page = PageRequest.of(pagina, size, Sort.by("nome"));
@@ -121,8 +127,8 @@ public class UsuarioMB {
 		return pageResultado;
 	}
 	
-	@GetMapping(path = "/email")
-	public LoginEntity getAllAtivos(@RequestParam String email) {
-		return loginService.getByPorEmail(email);
+	@GetMapping(path = "/validar/email")
+	public Boolean validarPossueEmail(@RequestParam String email) {
+		return dao.validarPossueEmail(email);
 	}
 }

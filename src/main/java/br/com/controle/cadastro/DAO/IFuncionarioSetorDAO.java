@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.com.controle.cadastro.models.FuncionarioSetorEntity;
+import br.com.controle.cadastro.models.UsuarioEntity;
 
 @Repository
 public interface IFuncionarioSetorDAO extends JpaRepository<FuncionarioSetorEntity, Integer> {
@@ -26,5 +27,9 @@ public interface IFuncionarioSetorDAO extends JpaRepository<FuncionarioSetorEnti
 	@Query(value="select * from sistema_controle.funcionario_setor fs "
 			+ "where fs.deletado = false", nativeQuery = true)
 	List<FuncionarioSetorEntity> getAllAtivos();
+	
+	@Query(value="select * from sistema_controle.funcionario_setor fs "
+			+ "where u.usuario.id = :id AND u.deletado = false ", nativeQuery = true)
+	UsuarioEntity possueFornecedor(String id);
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import br.com.controle.acesso.DAO.ILoginDAO;
 import br.com.controle.acesso.models.LoginEntity;
 import br.com.controle.acesso.services.ILoginService;
+import br.com.controle.cadastro.models.UsuarioEntity;
 
 @Component
 public class LoginServiceImpl implements ILoginService {
@@ -48,6 +49,11 @@ public class LoginServiceImpl implements ILoginService {
 	@Override
 	public LoginEntity getByPorEmail(String email) {
 		return dao.getByPorEmail(email);
+	}
+	
+	@Override
+	public List<LoginEntity> pesquisaLogin(String texto){
+		return dao.pesquisaLogin(texto);
 	}
 
 }

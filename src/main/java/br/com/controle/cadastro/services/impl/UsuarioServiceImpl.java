@@ -1,6 +1,7 @@
 package br.com.controle.cadastro.services.impl;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -87,10 +88,33 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		return Boolean.FALSE;
 	}
 	
+	
+	@Override
+	public Boolean possueLogin(Integer id) {
+		if(dao.getByIdPorLogin(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+	
 	@Override
 	public List<UsuarioEntity> funcionarios() {
 		return dao.funcionarios();
 	}
 
-	
+	@Override
+	public Boolean validarPossueEmail(String email) {
+		if( Objects.nonNull(dao.validarPossueEmail(email))) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	@Override
+	public Boolean possueFuncionarioSetor(Integer id) {
+		if(dao.getByIdPorFuncionarioSetor(id).size() > 0) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
 }

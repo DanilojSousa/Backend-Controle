@@ -59,9 +59,25 @@ public interface IUsuarioDAO extends JpaRepository<UsuarioEntity, Integer> {
 			+ "where c.id_nivel_acesso = :id and c.deletado = false ", nativeQuery = true)
 	List<UsuarioEntity> getByIdPorNivelAcesso(Integer id);
 	
+	@Query(value="select * from sistema_controle.usuario c "
+			+ "where and c.deletado = false and exists (select * from sistema_controle.login l"
+			+ "l.id_usuario = id: and l.deletado = false) ", nativeQuery = true)
+	List<UsuarioEntity> getByIdPorLogin(Integer id);
+	
 	@Query(value="select * from sistema_controle.usuario u "
 			+ "where u.deletado = false ", nativeQuery = true)
 	List<UsuarioEntity> getAllAtivos();
+
+	@Query(value="select * from sistema_controle.usuario u "
+			+ "where u.email = :email AND u.deletado = false ", nativeQuery = true)
+	UsuarioEntity validarPossueEmail(String email);
+	
+	@Query(value="select * from sistema_controle.usuario c "
+			+ "where and c.deletado = false and exists (select * from sistema_controle.funcionario_setor fs"
+			+ "fs.id_usuario = id: and fs.deletado = false and fs.funcionario = true and fs.cliente = false and fs.fornecedor = false) ", nativeQuery = true)
+	List<UsuarioEntity> getByIdPorFuncionarioSetor(Integer id);
+	
+
 	
 	
 } 

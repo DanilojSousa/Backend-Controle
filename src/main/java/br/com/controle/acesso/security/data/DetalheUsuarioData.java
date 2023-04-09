@@ -30,7 +30,11 @@ public class DetalheUsuarioData implements UserDetails {
 	@Override
 	public String getPassword() {
 		if(Objects.nonNull(login)) {
-			return login.getPassword();
+			try {
+				return login.getPassword();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return new LoginEntity().getPassword();
 	}
